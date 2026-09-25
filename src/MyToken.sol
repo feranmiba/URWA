@@ -160,8 +160,11 @@ contract URWA {
         if(balanceOf[from] < amount) {
             revert InsufficientBalance(amount, balanceOf[from]);
         } 
+        canReceive(to);
 
         uint256 fromFrozen = frozenTokens[from];
+
+        
 
         balanceOf[from] -= amount;
         if (fromFrozen >= amount) {
